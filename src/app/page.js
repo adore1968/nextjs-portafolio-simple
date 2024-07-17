@@ -1,95 +1,91 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+/* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
+import Experience from "./components/Experience";
+import Skill from "./components/Skill";
+import { skills, experiences, projects } from "./profile";
+import Project from "./components/Project";
 
-export default function Home() {
+function IndexPage() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+      <header className="row">
+        <div className="col-md-12">
+          <div className="card card-body bg-secondary text-light">
+            <div className="row">
+              <div className="col-md-4">
+                <img
+                  src="ryan-ray-profile2.jpeg"
+                  alt=""
+                  className="img-fluid"
+                />
+              </div>
+
+              <div className="col-md-8">
+                <h1>Rayn Ray</h1>
+                <h3>FullStack Developer</h3>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab
+                  nobis unde ratione voluptate obcaecati quod nisi, cupiditate
+                  modi. Hic dolorem similique asperiores omnis obcaecati
+                  reprehenderit ea expedita magnam quidem cumque?
+                </p>
+                <a href="/hire-me">Hire Me</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div className="row py-2">
+        <div className="col-md-4">
+          <div className="card bg-light">
+            <div className="card-body">
+              <h1>Skills</h1>
+              {skills.map((skill, index) => (
+                <Skill key={index} skill={skill} />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="col-md-8">
+          <div className="card bg-light">
+            <div className="card-body">
+              <h1>Experience</h1>
+              <ul>
+                {experiences.map((experience, index) => (
+                  <Experience key={index} experience={experience} />
+                ))}
+              </ul>
+              <Link href="/experiences" className="btn btn-light">
+                Know More
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div className="row">
+        <div className="col-md-12">
+          <div className="card card-body bg-dark">
+            <div className="row">
+              <div className="col-md-12">
+                <h1 className="text-center text-light">Portfolio</h1>
+              </div>
+              {projects.map((project, index) => (
+                <Project key={index} project={project} />
+              ))}
+            </div>
+            <div className="text-center mt-4">
+              <Link href="/portfolio" className="btn btn-outline-light">
+                More Projects
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </>
   );
 }
+
+export default IndexPage;
